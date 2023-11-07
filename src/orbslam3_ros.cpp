@@ -85,8 +85,9 @@ void ORBSLAM3Ros::procBuffers() {
 }
 
 void ORBSLAM3Ros::publishPose(const Sophus::SE3f& pose, const ros::Time& time) {
-  if (pose.translation().norm() > 0.0001 && !tracking_lost_) {
+  if (pose.translation().norm() > 0.0001) { 
     initialized_ = true;
+    tracking_lost_ = false;
     Sophus::SE3f pose_inv = pose.inverse();
 
     geometry_msgs::PoseStamped pose_msg;
@@ -102,7 +103,7 @@ void ORBSLAM3Ros::publishPose(const Sophus::SE3f& pose, const ros::Time& time) {
     pose_msg.pose.orientation.w = pose_inv.unit_quaternion().w();
 
     pose_pub_.publish(pose_msg);
-
+    
     ROS_INFO_STREAM("Tracking Latency: " << 
         (ros::Time::now() - pose_msg.header.stamp).toSec() << " sec");
   } else if (!initialized_) {
