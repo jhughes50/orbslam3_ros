@@ -85,7 +85,7 @@ void ORBSLAM3Ros::procBuffers() {
 }
 
 void ORBSLAM3Ros::publishPose(const Sophus::SE3f& pose, const ros::Time& time) {
-  if (pose.translation().norm() > 0.0001) { 
+  if (pose.translation().norm() > 0.0001){ // && !tracking_lost_) { 
     initialized_ = true;
     tracking_lost_ = false;
     Sophus::SE3f pose_inv = pose.inverse();

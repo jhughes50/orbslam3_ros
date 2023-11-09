@@ -3,7 +3,7 @@
 #--------------------------------------------------------------------------------------------
 # Camera Parameters. Adjust them!
 #--------------------------------------------------------------------------------------------
-Camera.type: "PinHole"
+Camera.type: "KannalaBrandt8"
 
 # Camera calibration and distortion parameters (OpenCV) 
 Camera.fx: 722.479060147979
@@ -13,8 +13,8 @@ Camera.cy: 329.35009982733385
 
 Camera.k1: -0.11737013100935385
 Camera.k2: 0.0022726141726788778
-Camera.p1: -0.0007828744799854327
-Camera.p2: 0.00027603366783984215
+Camera.k3: -0.0007828744799854327
+Camera.k4: 0.00027603366783984215
 
 Camera.width: 1280
 Camera.height: 800
